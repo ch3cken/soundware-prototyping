@@ -1,4 +1,6 @@
 <script>
+    const serverUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:4000';
+
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
     
@@ -51,7 +53,7 @@
                 }))
             };
 
-            const response = await fetch("http://localhost:3000/save-playlists", {
+            const response = await fetch(`${serverUrl}/save-playlists`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +95,10 @@
         isLoading = true;
 
         try {
-            const response = await fetch(`http://localhost:3000/get-playlists/${user.uid}`);
+            const response = await fetch(`${serverUrl}/get-playlists/${user.uid}`);
+            
+            console.log(response);
+
             const data = await response.json();
             
             if (data.playlists) {

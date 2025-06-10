@@ -1,4 +1,6 @@
 <script>
+  const serverUrl = import.meta.env.VITE_SERVER_URL || 'http://localhost:4000';
+
   // For debugging purposes
   const delay = (timeMs) => new Promise((resFn, rejFn) => setTimeout(resFn, timeMs));
   export let disableChatting = true;
@@ -50,7 +52,7 @@
           userInputHTML.placeholder = "Waiting response...";
 
           if(!disableChatting) {
-            const response = await fetch('http://localhost:3000/chat', {
+            const response = await fetch(`${serverUrl}/chat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

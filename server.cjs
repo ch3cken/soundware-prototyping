@@ -20,7 +20,7 @@ const {
 
 // Create an instance of the Express application
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.VITE_PORT || 4000;
 
 // System string
 const systemString = `You are a music recommendation assistant. Your responses MUST:
