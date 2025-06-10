@@ -20,7 +20,7 @@ const {
 
 // Create an instance of the Express application
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 // System string
 const systemString = `You are a music recommendation assistant. Your responses MUST:
@@ -230,5 +230,5 @@ app.get('/get-playlists/:userId', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Server running at ${port}`);
 });
